@@ -239,7 +239,7 @@ def show_devices_info(devices):
             show_device_info(device)
 
     except Exception as e:
-        logger.error(f"Error occurred while trying to show device info: {e}")
+        logger.error(f"Error occurred while showing device info: {e}")
         raise
 
 ###############################################################################

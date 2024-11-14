@@ -2,6 +2,11 @@
 credentials.json
 encryption_key.key
 
+# Ignore projects not ready for git / github
+DonationAutomation/
+PasswordManager/
+Tests/
+
 #Ignore stuff that the template somehow missed
 __pycache__
 .vscode/
