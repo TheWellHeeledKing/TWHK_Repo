@@ -9,7 +9,7 @@ from rgb_lib.device_manager import (
     test_all_devices
 )
 
-from rgb_utils.interfaces import show_i2c_interfaces
+from rgb_lib.interfaces import show_i2c_interfaces
 
 import sys
 from config import (DEBUG_LEVEL,
