@@ -111,10 +111,10 @@ def terminate_openRGB_server(OpenRGB_server_process):
 
             OpenRGB_server_process.terminate()
 
-            logger.info(f"Waiting {config.OPEN_RGB_TERMINATE_WAIT_SECS} seconds "
-                        "for OpenRGB Server to terminate.")
+            logger.info(f"Waiting {config.OPEN_RGB_TERMINATE_WAIT_SECS} "
+                        "seconds for OpenRGB Server to terminate.")
 
-            time.sleep(config.OPEN_RGB_TERMINATE_WAIT_SECS)  # Wait before checking
+            time.sleep(config.OPEN_RGB_TERMINATE_WAIT_SECS)  # Wait b4 checking
 
             if is_openrgb_server_running(config.LOCAL_HOST, config.PORT):
                 raise RuntimeError("OpenRGB server failed to terminate.")
@@ -123,7 +123,8 @@ def terminate_openRGB_server(OpenRGB_server_process):
 
         else:
 
-            raise RuntimeError("OpenRGB server not found / already terminated.")
+            raise RuntimeError("OpenRGB server not found / "
+                               "already terminated.")
 
     except Exception as exception_msg:
         logger.error(f"{exception_msg}")

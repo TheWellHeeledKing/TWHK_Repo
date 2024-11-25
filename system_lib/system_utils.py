@@ -1,9 +1,15 @@
 import logging
-from config import (MIN_ARGS, MAX_ARGS, MODE_ARG, COLOR_ARG, LEVEL_ARG,
+from config import (MIN_ARGS,
+                    MAX_ARGS,
+                    MODE_ARG,
+                    COLOR_ARG,
+                    LEVEL_ARG,
                     ARG_MODES,
-                    SINGLE_ARG_MODES, MULTI_ARG_MODES,
-                    LEVEL_MAX, LEVEL_MIN,
-                    COLOR_MAP)
+                    SINGLE_ARG_MODES,
+                    MULTI_ARG_MODES,
+                    LEVEL_MAX,
+                    LEVEL_MIN)
+from rgb_lib import COLOR_MAP
 
 # Create a logger for this module
 logger = logging.getLogger(__name__)
@@ -48,7 +54,7 @@ def get_args(input_args):
                     raise ValueError(f"Invalid Level Argument "
                                      f"{args[LEVEL_ARG]} Not between "
                                      f"{LEVEL_MIN} and {LEVEL_MAX}")
-        logger.info(f"Script call: {args}")
+        logger.info(f"Script arguments confirmed: {args}")
         return args
 
     except ValueError as exception_msg:

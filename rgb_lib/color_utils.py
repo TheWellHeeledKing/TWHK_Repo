@@ -1,6 +1,8 @@
-import config
 import colorsys
+
+
 from openrgb.utils import RGBColor
+from rgb_lib import COLOR_MAP
 from decimal import Decimal, ROUND_DOWN
 import logging
 
@@ -60,25 +62,25 @@ def get_bespoke_zone_color_scheme(device_name, zone_name, num_zone_leds):
         if zone_name == "Aura Addressable 1":
 
             for led_index in range(num_zone_leds):
-                zone_color_scheme.append(config.COLOR_MAP.get("Red"))
+                zone_color_scheme.append(COLOR_MAP.get("Red"))
             return zone_color_scheme
 
         if zone_name == "Aura Addressable 2":
 
             for led_index in range(num_zone_leds):
                 if led_index <= 3 or led_index >= 9:
-                    zone_color_scheme.append(config.COLOR_MAP.get("Red"))
+                    zone_color_scheme.append(COLOR_MAP.get("Red"))
                 else:
-                    zone_color_scheme.append(config.COLOR_MAP.get("White"))
+                    zone_color_scheme.append(COLOR_MAP.get("White"))
             return zone_color_scheme
 
         if zone_name == "Aura Addressable 3":
 
             for led_index in range(num_zone_leds):
                 if led_index <= 6 or (led_index >= 10 and led_index <= 15):
-                    zone_color_scheme.append(config.COLOR_MAP.get("Red"))
+                    zone_color_scheme.append(COLOR_MAP.get("Red"))
                 else:
-                    zone_color_scheme.append(config.COLOR_MAP.get("White"))
+                    zone_color_scheme.append(COLOR_MAP.get("White"))
             return zone_color_scheme
 
     if device_name == "G502 HERO Gaming Mouse":
@@ -86,20 +88,20 @@ def get_bespoke_zone_color_scheme(device_name, zone_name, num_zone_leds):
         if zone_name == "Primary Zone":
 
             for led_index in range(num_zone_leds):
-                zone_color_scheme.append(config.COLOR_MAP.get("White"))
+                zone_color_scheme.append(COLOR_MAP.get("White"))
             return zone_color_scheme
 
     if device_name == "Logitech G213":
 
         for led_index in range(num_zone_leds):
             if led_index == 3:
-                zone_color_scheme.append(config.COLOR_MAP.get("White"))
+                zone_color_scheme.append(COLOR_MAP.get("White"))
             else:
-                zone_color_scheme.append(config.COLOR_MAP.get("Red"))
+                zone_color_scheme.append(COLOR_MAP.get("Red"))
         return zone_color_scheme
 
     # All other LEDs default to Red
     for led_index in range(num_zone_leds):
-        zone_color_scheme.append(config.COLOR_MAP.get("Red"))
+        zone_color_scheme.append(COLOR_MAP.get("Red"))
 
     return zone_color_scheme

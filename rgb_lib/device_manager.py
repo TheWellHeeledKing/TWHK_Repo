@@ -1,9 +1,177 @@
 import logging
 from config import DIRECT
-from python_utils.class_utils import show_class_interface
+from python_lib.class_utils import show_class_interface
+from rgb_lib.colors import (get_spectrum_colors, set_color_level)
+from rgb_lib.color_utils import (get_bespoke_zone_color_scheme)
+from rgb_lib import COLOR_MAP
 
 # Create a logger for this module
 logger = logging.getLogger(__name__)
+
+##############################################################################
+
+
+def set_devices_to_single_color(devices, color, level=None):
+
+    try:
+
+        if level is not None:
+            rgb = set_color_level(COLOR_MAP.get(color), int(level))
+        else:
+            rgb = COLOR_MAP.get(color)
+
+        logger.info(f"Setting every device to {color}, level {level}")
+
+        for device in devices:
+            logger.debug(f"Setting {color} on {device.name}")
+
+            set_single_color(device, rgb)
+
+    except Exception as e:
+
+        logger.error(f"Error occurred while setting devices to {color}: {e}")
+        raise
+
+###############################################################################
+
+
+def set_devices_to_spectrum(devices):
+
+    try:
+
+        logger.info("Setting each device to a spectrum "
+                    "depending on the number of LEDs")
+
+        for device in devices:
+
+            logger.debug(f"Setting spectrum on {device.name} "
+                         f"which has {len(device.zones)} zones "
+                         f"and {len(device.leds)} LEDs in total")
+
+            zone_leds_color_map = get_spectrum_colors(device)
+            set_spectrum_colors(device, zone_leds_color_map)
+
+    except Exception as e:
+
+        logger.error(f"Error occurred while setting devices to spectrum: {e}")
+        raise
+
+
+###############################################################################
+
+
+def set_devices_mode(devices, mode):
+
+    try:
+
+        logger.info(f"Setting each device to mode: {mode}")
+
+        for device in devices:
+            logger.debug(f"Setting mode on {device.name} to {mode}")
+            device.set_mode(mode)
+
+    except Exception as e:
+
+        logger.error(f"Error occurred while trying to set devices modes: {e}")
+        raise
+
+###############################################################################
+
+
+def set_devices_to_bespoke_lighting(devices):
+
+    try:
+
+        logger.info("Setting devices to bespoke lighting")
+
+        for device in devices:
+
+            logger.debug(f"Setting {device.name} to bespoke lighting")
+
+            device_lighting_scheme = {}
+            set_device_mode(device)
+            zones = device.zones
+
+            for zone in zones:
+
+                logger.debug(f"Getting {zone.name} lighting scheme")
+
+                zone_lighting_scheme = get_bespoke_zone_color_scheme(
+                    device.name,
+                    zone.name,
+                    len(zone.leds))
+
+                device_lighting_scheme[zone.name] = zone_lighting_scheme
+
+            set_device_to_bespoke_lighting(device, device_lighting_scheme)
+
+    except Exception as e:
+
+        logger.error(f"Error occurred trying to set bespoke lighting: {e}")
+        raise
+
+###############################################################################
+
+
+def set_devices_colors_by_mode(client, mode):
+
+    try:
+
+        if mode == "Clear":
+            # Turn off all LEDs
+            client.clear()
+        elif mode == "Spectrum":
+            set_devices_to_spectrum(client.devices)
+        elif mode == "Breathing":
+            set_devices_mode(client.devices, mode)
+        elif mode == "Bespoke":
+            set_devices_to_bespoke_lighting(client.devices)
+
+    except Exception as e:
+        logger.error(f"Error occurred while trying to set the colors: {e}")
+        raise
+
+###############################################################################
+
+
+def show_devices_info(devices):
+
+    try:
+
+        for device_index, device in enumerate(devices):
+
+            if device_index == 0:
+                show_device_interface(device)
+
+            logger.info(f"\nDevice {device_index} : {device.name}")
+
+            print_attributes(device, "Device")
+
+            # Zone details
+            for i, zone in enumerate(device.zones):
+                print_attributes(zone, f"Zone {i}")
+
+            # LED details
+            for i, led in enumerate(device.leds):
+                print_attributes(led, f"LED {i}")
+
+            # show_device_info(device)
+
+    except Exception as e:
+        logger.error(f"{e}")
+        raise
+
+###############################################################################
+
+
+def test_all_devices(devices):
+
+    try:
+
+        show_devices_info(devices)
+
+    except Exception as e:
+        logger.error(f"{e}")
 
 ###############################################################################
 
