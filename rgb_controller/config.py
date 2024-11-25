@@ -1,9 +1,3 @@
-import logging
-
-DEBUG_LEVEL = logging.INFO
-
-MAIN = "__main__"
-
 MIN_ARGS = 1
 MAX_ARGS = 3
 
@@ -17,26 +11,4 @@ MULTI_ARG_MODES = 1
 ARG_MODES = [["Info", "Test", "Clear", "Spectrum", "Bespoke", "Breathing"],
              ["Single"]]
 
-LEVEL_MIN = 50
-LEVEL_MAX = 255
-
-OPEN_RGB_PATH = "C:\\Users\\Mike\\Software\\OpenRGB Windows 64-bit\\"
-OPEN_RGB_EXE = "OpenRGB.exe"
-OPEN_RGB_SERVER_ARG = "--server"
-OPEN_RGB_LOGLEVEL_ARG = "--loglevel"
-OPEN_RGB_LOGLEVEL = "6"
-
-OPEN_RGB_STARTUP_WAIT_SECS = 8
-OPEN_RGB_TERMINATE_WAIT_SECS = 1
-
-LOCAL_HOST = "localhost"
-PORT = 6742
-
-NUMBER_OF_RGB_DEVICES = 3
-
-DIRECT = "Direct"
-
-EXIT_STATUS_ABNORMAL = 1
-EXIT_STATUS_NORMAL = 0
-
-CLOSE_SCRIPT_WAIT_SECS = 0
+RGB_DEVICE_COUNT = 3

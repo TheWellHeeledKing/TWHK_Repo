@@ -1,12 +1,12 @@
 import logging
-from config import DIRECT
-from python_lib.class_utils import show_class_interface
+from .config import DIRECT
+from common_lib.class_utils import show_class_interface
 from rgb_lib.colors import (get_spectrum_colors, set_color_level)
 from rgb_lib.color_utils import (get_bespoke_zone_color_scheme)
-from rgb_lib import COLOR_MAP
+from .config import COLOR_MAP
 
 # Create a logger for this module
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 ##############################################################################
 
@@ -179,7 +179,7 @@ def test_all_devices(devices):
 def set_device_mode(device, mode=None):
     if mode is None:
         mode = DIRECT
-    logger.info(f"Setting device {device.name} to mode {mode}")
+    logger.debug(f"Setting device {device.name} to mode {mode}")
     device.set_mode(mode)
 
 ###############################################################################
@@ -294,8 +294,8 @@ def set_spectrum_colors(device, zone_leds_color_map):
                              f"number of RGBColors ({RGBcolor_count}) "
                              "in RGBColors map. Cannot set LEDs. Aborting")
 
-        logger.info(f"Setting Device {device.name}, "
-                    f"Zone {zone.name} to spectrum.")
+        logger.debug(f"Setting Device {device.name}, "
+                     f"Zone {zone.name} to spectrum.")
 
         for index in range(led_count):
 

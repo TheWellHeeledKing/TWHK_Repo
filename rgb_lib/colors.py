@@ -1,17 +1,12 @@
-from config import (LEVEL_MAX)
+from .config import (RGB_MAX, H_MIN, H_MAX, ROUND_DIGITS)
 import colorsys
 from openrgb.utils import RGBColor
 from decimal import Decimal, ROUND_DOWN
-from rgb_lib import COLOR_MAP
+from .config import COLOR_MAP
 import logging
 
-H_MIN = 0.000
-H_MAX = 0.933
-
-ROUND_DIGITS = "0.001"
-
 # Create a logger for this module
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 ##############################################################################
 
@@ -22,9 +17,9 @@ def set_color_level(rgb, level):
 
         rgb_levelled = rgb
 
-        rgb_levelled.red = level if rgb.red == LEVEL_MAX else rgb.red
-        rgb_levelled.green = level if rgb.green == LEVEL_MAX else rgb.green
-        rgb_levelled.blue = level if rgb.blue == LEVEL_MAX else rgb.blue
+        rgb_levelled.red = level if rgb.red == RGB_MAX else rgb.red
+        rgb_levelled.green = level if rgb.green == RGB_MAX else rgb.green
+        rgb_levelled.blue = level if rgb.blue == RGB_MAX else rgb.blue
 
         return rgb_levelled
 

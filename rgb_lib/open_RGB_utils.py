@@ -4,10 +4,18 @@ import time
 import socket
 import subprocess
 import logging
-import config
+from .config import (EXE,
+                     LOGLEVEL,
+                     LOGLEVEL_ARG,
+                     PATH,
+                     SERVER_ARG,
+                     STARTUP_WAIT_SECS,
+                     TERMINATE_WAIT_SECS,
+                     LOCAL_HOST,
+                     PORT)
 
 # Create a logger for this module
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 ###############################################################################
 
@@ -26,35 +34,37 @@ def start_openRGB_server():
     try:
 
         # Construct the full path for OpenRGB
-        open_rgb_full_path = os.path.join(config.OPEN_RGB_PATH,
-                                          config.OPEN_RGB_EXE)
+        open_rgb_full_path = os.path.join(PATH,
+                                          EXE)
 
         logger.info("Starting subprocess: "
                     f"{open_rgb_full_path} "
-                    f"{config.OPEN_RGB_SERVER_ARG} "
-                    f"{config.OPEN_RGB_LOGLEVEL_ARG} "
-                    f"{config.OPEN_RGB_LOGLEVEL}")
+                    f"{SERVER_ARG} "
+                    f"{LOGLEVEL_ARG} "
+                    f"{LOGLEVEL}")
 
         try:
             OpenRGBServerProcess = subprocess.Popen(
                 [open_rgb_full_path,
-                 config.OPEN_RGB_SERVER_ARG,
-                 config.OPEN_RGB_LOGLEVEL_ARG,
-                 config.OPEN_RGB_LOGLEVEL])
+                 SERVER_ARG,
+                 LOGLEVEL_ARG,
+                 LOGLEVEL])
 
         except Exception as exception_msg:
             logger.exception(f"Failed to start OpenRGB: {exception_msg}")
 
-        logger.info(f"Waiting {config.OPEN_RGB_STARTUP_WAIT_SECS} seconds "
-                    "for OpenRGB Server to start.")
+        logger.info(f"Waiting {STARTUP_WAIT_SECS} "
+                    "seconds for OpenRGB Server to start.")
 
-        time.sleep(config.OPEN_RGB_STARTUP_WAIT_SECS)  # Wait before checking
+        time.sleep(STARTUP_WAIT_SECS)  # Wait b4 check
 
-        if is_openrgb_server_running(config.LOCAL_HOST, config.PORT):
+        if is_openrgb_server_running(LOCAL_HOST,
+                                     PORT):
             logger.info("OpenRGB server is running and reachable.")
         else:
             raise RuntimeError("OpenRGB server failed to start in "
-                               f"{config.OPEN_RGB_STARTUP_WAIT_SECS} seconds.")
+                               f"{STARTUP_WAIT_SECS}"
+                               " seconds.")
 
         return (OpenRGBServerProcess)
 
@@ -64,14 +74,15 @@ def start_openRGB_server():
 ###############################################################################
 
 
-def connect_openRGB_client():
+def connect_openRGB_client(numberOfDevices):
 
     try:
 
         # Connect to OpenRGB server
-        client = OpenRGBClient(config.LOCAL_HOST, config.PORT)
+        client = OpenRGBClient(LOCAL_HOST,
+                               PORT)
 
-        if len(client.devices) == config.NUMBER_OF_RGB_DEVICES:
+        if len(client.devices) == numberOfDevices:
 
             logger.info("Connected to OpenRGBClient with "
                         f"{len(client.devices)} devices.")
@@ -79,7 +90,7 @@ def connect_openRGB_client():
         else:
 
             raise RuntimeError("OpenRGBClient couldn't connect with all "
-                               f"{config.NUMBER_OF_RGB_DEVICES} devices.")
+                               f"{numberOfDevices} devices.")
 
         return (client)
 
@@ -107,16 +118,20 @@ def terminate_openRGB_server(OpenRGB_server_process):
 
     try:
 
-        if is_openrgb_server_running(config.LOCAL_HOST, config.PORT):
+        if is_openrgb_server_running(LOCAL_HOST,
+                                     PORT):
 
             OpenRGB_server_process.terminate()
 
-            logger.info(f"Waiting {config.OPEN_RGB_TERMINATE_WAIT_SECS} "
+            logger.info("Waiting "
+                        f"{TERMINATE_WAIT_SECS} "
                         "seconds for OpenRGB Server to terminate.")
 
-            time.sleep(config.OPEN_RGB_TERMINATE_WAIT_SECS)  # Wait b4 checking
+            # Wait before checking
+            time.sleep(TERMINATE_WAIT_SECS)
 
-            if is_openrgb_server_running(config.LOCAL_HOST, config.PORT):
+            if is_openrgb_server_running(LOCAL_HOST,
+                                         PORT):
                 raise RuntimeError("OpenRGB server failed to terminate.")
             else:
                 logger.info("OpenRGB server process terminated.")

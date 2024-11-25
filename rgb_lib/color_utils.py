@@ -1,18 +1,12 @@
 import colorsys
 
-
 from openrgb.utils import RGBColor
-from rgb_lib import COLOR_MAP
+from .config import COLOR_MAP, H_MIN, H_MAX, ROUND_DIGITS
 from decimal import Decimal, ROUND_DOWN
 import logging
 
-H_MIN = 0.000
-H_MAX = 0.933
-
-ROUND_DIGITS = "0.001"
-
 # Create a logger for this module
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 ###############################################################################
 

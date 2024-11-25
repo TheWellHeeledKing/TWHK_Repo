@@ -1,5 +1,7 @@
 import logging
-logger = logging.getLogger(__name__)
+
+# Create a logger for this module
+logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 ###############################################################################
 
