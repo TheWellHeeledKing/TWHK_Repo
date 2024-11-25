@@ -3,9 +3,16 @@ credentials.json
 encryption_key.key
 
 # Ignore projects not ready for git / github
+PortfolioManagement/
 DonationAutomation/
 PasswordManager/
 Tests/
+
+# Just for communicating the directory structure to ChatGPT
+directory_structure.txt
+
+# Don't even know what this is! Probably relevant to the PortfolioManagement project.
+isin_list.json
 
 #Ignore stuff that the template somehow missed
 __pycache__
