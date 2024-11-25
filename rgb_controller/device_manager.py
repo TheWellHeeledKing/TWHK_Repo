@@ -1,6 +1,6 @@
 import logging
-
-DIRECT = "Direct"
+from config import DIRECT
+from python_utils.class_utils import show_class_interface
 
 # Create a logger for this module
 logger = logging.getLogger(__name__)
@@ -32,20 +32,44 @@ def show_device_info(device):
 
             leds = zone.leds
             for led_index, led in enumerate(leds):
-                
+
                 logger.info(f"        {led_index} Led {led.name}")
 
     except Exception as e:
-        logger.exception(f"Error occurred while trying to show device info: {e}")
+        logger.exception(f"Error occurred while showing device info: {e}")
         raise
+
+###############################################################################
+
+
+def print_attributes(obj, name="Object"):
+
+    logger.info(f"\n{'#'*6} {name} Attributes:")
+
+    for attribute, value in vars(obj).items():
+        logger.info(f"{' '*6} {attribute}: {value}")
+
+
+###############################################################################
+
+
+def show_device_interface(device):
+
+    show_class_interface(device, "Device")
+    show_class_interface(device.zones[0], "Zone")
+    show_class_interface(device.zones[0].leds[0], "Led")
 
 ###############################################################################
 
 
 def set_single_color(device, RGBcolor):
     set_device_mode(device)
-    for led in device.leds:
-        led.set_color(RGBcolor)
+    logger.debug(f"Setting single color for {device.name}")
+    for zone in device.zones:
+        logger.debug(f"                         {zone.name}")
+        for led in zone.leds:
+            logger.debug(f"                         {led.name}")
+            led.set_color(RGBcolor)
 
 ###############################################################################
 
@@ -56,13 +80,13 @@ def set_device_to_bespoke_lighting(device, device_led_color_scheme):
         logger.debug(f"Setting bespoke lighting for device {device.name}")
 
         for zone in device.zones:
-    
+
             logger.debug(f"                                    {zone.name}")
 
             zone_led_color_scheme = device_led_color_scheme.get(zone.name)
 
             if len(zone.leds) != len(zone_led_color_scheme):
-                raise IndexError("Number of LEDs in zone does not match number "
+                raise IndexError("No. of LEDs in zone does not match no. "
                                  "of entries in the zone color scheme!")
 
             for led_index, led in enumerate(zone.leds):

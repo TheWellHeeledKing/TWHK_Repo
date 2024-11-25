@@ -1,7 +1,7 @@
 import logging
 from openrgb.utils import RGBColor
 
-DEBUG_LEVEL = logging.DEBUG
+DEBUG_LEVEL = logging.ERROR
 
 MAIN = "__main__"
 
@@ -31,7 +31,8 @@ LEVEL_ARG = 2
 SINGLE_ARG_MODES = 0
 MULTI_ARG_MODES = 1
 
-ARG_MODES = [["Clear", "Spectrum", "Info", "Breathing", "Bespoke"], ["Single"]]
+ARG_MODES = [["Info", "Test", "Clear", "Spectrum", "Bespoke", "Breathing"],
+             ["Single"]]
 
 COLORS = COLOR_MAP.keys
 
@@ -52,7 +53,9 @@ PORT = 6742
 
 NUMBER_OF_RGB_DEVICES = 3
 
+DIRECT = "Direct"
+
 EXIT_STATUS_ABNORMAL = 1
 EXIT_STATUS_NORMAL = 0
 
-CLOSE_SCRIPT_WAIT_SECS = 3
+CLOSE_SCRIPT_WAIT_SECS = 0

@@ -15,10 +15,6 @@ logger = logging.getLogger(__name__)
 ###############################################################################
 
 
-
-###############################################################################
-
-
 def get_RGB_color_spectrum(num_colors):
 
     logger.debug(f"Get {num_colors} Spectrum colors as RGB colors")

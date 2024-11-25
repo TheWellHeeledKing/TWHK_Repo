@@ -1,6 +1,7 @@
 import sys
 from config import (DEBUG_LEVEL, MAX_ARGS, MODE_ARG,
-                    COLOR_ARG, LEVEL_ARG, LEVEL_MAX, COLOR_MAP)
+                    COLOR_ARG, LEVEL_ARG, LEVEL_MAX, COLOR_MAP,
+                    DIRECT)
 from system_utils import get_args
 from open_RGB_utils import (
     start_openRGB_server,
@@ -15,7 +16,8 @@ from device_manager import (
     set_spectrum_colors,
     set_device_to_bespoke_lighting,
     set_device_mode,
-    show_device_info)
+    show_device_interface,
+    print_attributes)
 import requests
 import time
 import logging
@@ -41,6 +43,8 @@ def set_color_level(rgb, level):
         logger.error(f"Error occurred setting color level to {level}: {e}")
         raise
 
+##############################################################################
+
 
 def set_devices_to_single_color(devices, color, level=None):
 
@@ -52,8 +56,10 @@ def set_devices_to_single_color(devices, color, level=None):
             rgb = COLOR_MAP.get(color)
 
         logger.info(f"Setting every device to {color}, level {level}")
+
         for device in devices:
             logger.debug(f"Setting {color} on {device.name}")
+
             set_single_color(device, rgb)
 
     except Exception as e:
@@ -235,12 +241,39 @@ def show_devices_info(devices):
     try:
 
         for device_index, device in enumerate(devices):
-            logger.info(f"{device_index} Device {device.name}")
-            show_device_info(device)
+
+            if device_index == 0:
+                show_device_interface(device)
+
+            logger.info(f"\nDevice {device_index} : {device.name}")
+
+            print_attributes(device, "Device")
+
+            # Zone details
+            for i, zone in enumerate(device.zones):
+                print_attributes(zone, f"Zone {i}")
+
+            # LED details
+            for i, led in enumerate(device.leds):
+                print_attributes(led, f"LED {i}")
+
+            #show_device_info(device)
 
     except Exception as e:
-        logger.error(f"Error occurred while showing device info: {e}")
+        logger.error(f"{e}")
         raise
+
+###############################################################################
+
+
+def test_all_devices(devices):
+
+    try:
+
+        show_devices_info(devices)
+
+    except Exception as e:
+        logger.error(f"{e}")
 
 ###############################################################################
 
@@ -249,6 +282,9 @@ if __name__ == config.MAIN:
 
     logging.basicConfig(level=DEBUG_LEVEL)
     logger = logging.getLogger(__name__)
+
+    # Log the script name and arguments
+    logger.info(f"Starting: {' '.join(sys.argv[0:])}")
 
     try:
 
@@ -268,13 +304,16 @@ if __name__ == config.MAIN:
             if args[MODE_ARG] == "Info":
                 show_devices_info(client.devices)
                 # show_i2c_interfaces(client)
+            elif args[MODE_ARG] == "Test":
+                test_all_devices(client.devices)
             elif args[MODE_ARG] == "Single":
-
                 level = args[LEVEL_ARG] if len(args) == MAX_ARGS else None
                 set_devices_to_single_color(client.devices, args[COLOR_ARG], level)
-
             else:
                 set_colors_by_mode(client, args[MODE_ARG])
+
+            if DEBUG_LEVEL == logging.DEBUG:
+                show_devices_info(client.devices)
 
             disconnect_openRGB_client(client)
 
@@ -283,7 +322,6 @@ if __name__ == config.MAIN:
 
         finally:
             terminate_openRGB_server(server_process)
-            raise
 
     except Exception as e:
         logger.exception(f"{e}: Terminating Script")

@@ -11,9 +11,6 @@ logger = logging.getLogger(__name__)
 ###############################################################################
 
 
-
-
-
 def get_args(input_args):
 
     args = input_args[1:]  # First arg is always path/filename. Slice off.
@@ -51,7 +48,7 @@ def get_args(input_args):
                     raise ValueError(f"Invalid Level Argument "
                                      f"{args[LEVEL_ARG]} Not between "
                                      f"{LEVEL_MIN} and {LEVEL_MAX}")
-
+        logger.info(f"Script call: {args}")
         return args
 
     except ValueError as exception_msg:
