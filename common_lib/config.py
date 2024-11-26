@@ -12,3 +12,8 @@ LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
 # Any other constants can be added here
 MAIN = "__main__"
+
+# Initialize translation constants. Change language here
+LANGUAGE = "de"
+# Define path to the .mo file for the specified language
+MO_PATH_AND_FILENAME = f"locales/{LANGUAGE}/LC_MESSAGES/messages.mo"

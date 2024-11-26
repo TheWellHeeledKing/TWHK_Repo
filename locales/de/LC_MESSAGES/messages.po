@@ -1,0 +1,21 @@
+#
+msgid ""
+msgstr ""
+
+msgid "Starting: "
+msgstr "Starte: "
+
+msgid "Entering Debug Mode"
+msgstr "Debug-Modus aktiviert"
+
+msgid "Startup Error. Exiting"
+msgstr "Startfehler. Beenden"
+
+msgid "Exit due to processing error: "
+msgstr "Beenden wegen Verarbeitungsfehler: "
+
+msgid "Exit due to exception: "
+msgstr "Beenden wegen Fehler: "
+
+msgid "Script finishes in (secs): "
+msgstr "Skript beendet in (secs): "

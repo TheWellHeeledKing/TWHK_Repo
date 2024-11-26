@@ -12,3 +12,7 @@ ARG_MODES = [["Info", "Test", "Clear", "Spectrum", "Bespoke", "Breathing"],
              ["Single"]]
 
 RGB_DEVICE_COUNT = 3
+
+INFO_MODE = "Info"
+TEST_MODE = "Test"
+SINGLE_MODE = "Single"

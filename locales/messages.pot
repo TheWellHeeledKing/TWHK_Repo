@@ -1,0 +1,27 @@
+#
+msgid ""
+msgstr ""
+
+#: rgb_controller\rgb_control.py
+msgid "Starting: {args}"
+msgstr ""
+
+#: rgb_controller\rgb_control.py
+msgid "Entering Debug Mode"
+msgstr ""
+
+#: rgb_controller\rgb_control.py
+msgid "Startup Error. Exiting"
+msgstr ""
+
+#: rgb_controller\rgb_control.py
+msgid "Exit due to processing error: {e}"
+msgstr ""
+
+#: rgb_controller\rgb_control.py
+msgid "Exit due to exception: {e}"
+msgstr ""
+
+#: rgb_controller\rgb_control.py
+msgid "Script finishes in (secs): "
+msgstr ""

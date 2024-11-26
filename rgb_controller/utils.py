@@ -5,9 +5,19 @@ from config import (MIN_ARGS,
                     LEVEL_ARG,
                     ARG_MODES,
                     SINGLE_ARG_MODES,
-                    MULTI_ARG_MODES)
+                    MULTI_ARG_MODES,
+                    INFO_MODE,
+                    SINGLE_MODE,
+                    TEST_MODE)
 
 from rgb_lib.config import COLOR_MAP, RGB_MIN, RGB_MAX
+
+from rgb_lib.device_manager import (set_devices_to_single_color,
+                                    set_devices_colors_by_mode,
+                                    show_devices_info,
+                                    test_all_devices)
+
+from common_lib.translator import get_translation
 
 import logging
 
@@ -59,3 +69,36 @@ def validate_args(args):
     except ValueError as e:
         logger.exception(f"Argument Error: {e}. Exiting")
         raise
+
+###############################################################################
+
+
+def process(client, args):
+
+    try:
+
+        logger.info(f"Processing {args[MODE_ARG]} mode.")
+
+        if args[MODE_ARG] == INFO_MODE:
+            show_devices_info(client.devices)
+            # show_i2c_interfaces(client)
+            return
+
+        if args[MODE_ARG] == TEST_MODE:
+            test_all_devices(client.devices)
+            return
+
+        if args[MODE_ARG] == SINGLE_MODE:
+            level = args[LEVEL_ARG] if len(args) == MAX_ARGS else None
+            set_devices_to_single_color(client.devices,
+                                        args[COLOR_ARG],
+                                        level)
+            return
+
+        set_devices_colors_by_mode(client, args[MODE_ARG])
+        return
+
+    except Exception as e:
+
+        logger_msg: str = get_translation("Exit due to process error: ")
+        logger.exception(logger_msg + str(e))
