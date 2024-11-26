@@ -3,7 +3,7 @@ import os
 
 # Path to the 'locales' directory
 locales_dir = os.path.join(os.path.dirname(__file__), "locales")
-mo_file_path = os.path.join(locales_dir, "de", "LC_MESSAGES", "messages.mo")
+mo_file_path = os.path.join(locales_dir, "en", "LC_MESSAGES", "messages.mo")
 
 # Try to read the MO file
 try:

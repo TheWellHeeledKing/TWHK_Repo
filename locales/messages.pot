@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "Starting: {args}"
+msgid "Starting: "
 msgstr ""
 
 #: rgb_controller\rgb_control.py
@@ -15,13 +15,73 @@ msgid "Startup Error. Exiting"
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "Exit due to processing error: {e}"
+msgid "Exit due to processing error: "
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "Exit due to exception: {e}"
+msgid "Exit due to exception: "
 msgstr ""
 
 #: rgb_controller\rgb_control.py
 msgid "Script finishes in (secs): "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "No arguments provided!"
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Too many arguments!"
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Invalid single argument: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Permitted single arguments: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Invalid first argument: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Permitted first arguments: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Invalid color argument: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Permitted color arguments: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Invalid RGB level argument: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Allowed from: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid " to: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Arguments validated: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Argument Error, Exiting due to "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Processing mode: "
+msgstr ""
+
+#: rgb_controller\utils.py
+msgid "Exit due to process error: "
 msgstr ""

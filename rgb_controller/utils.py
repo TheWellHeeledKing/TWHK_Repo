@@ -32,43 +32,74 @@ def validate_args(args):
     try:
 
         if len(args) < MIN_ARGS:
-            raise ValueError("No arguments provided!")
+            msg: str = get_translation("No arguments provided!")
+            logger.exception(msg)
+            raise ValueError(msg)
 
         if len(args) > MAX_ARGS:
-            raise ValueError("Too many arguments!")
+            msg: str = get_translation("Too many arguments!")
+            logger.exception(msg)
+            raise ValueError(msg)
 
         if len(args) == 1:
 
             if (args[MODE_ARG] not in ARG_MODES[SINGLE_ARG_MODES]):
-                raise ValueError("Invalid single argument! "
-                                 f"{args[MODE_ARG]} not in "
-                                 f"{ARG_MODES[SINGLE_ARG_MODES]}")
+
+                msg1: str = get_translation("Invalid single argument: ")
+                msg1 += str(args[MODE_ARG])
+                logger.exception(msg1)
+                msg2: str = get_translation("Permitted single arguments: ")
+                msg2 += str(ARG_MODES[SINGLE_ARG_MODES])
+                logger.exception(msg2)
+
+                raise ValueError(msg1)
 
         else:
             if len(args) > 1:
                 if args[MODE_ARG] not in ARG_MODES[MULTI_ARG_MODES]:
-                    raise ValueError("Invalid first Argument! "
-                                     f"{args[MODE_ARG]} not in "
-                                     f"{ARG_MODES[MULTI_ARG_MODES]}")
+
+                    msg1: str = get_translation("Invalid first argument: ")
+                    msg1 += str(args[MODE_ARG])
+                    logger.exception(msg1)
+                    msg2: str = get_translation("Permitted first arguments: ")
+                    msg2 += str(ARG_MODES[MULTI_ARG_MODES])
+                    logger.exception(msg2)
+
+                    raise ValueError(msg1)
 
             if args[COLOR_ARG] not in COLOR_MAP.keys():
-                raise ValueError("Invalid Color Argument! "
-                                 f"{args[COLOR_ARG]} not in "
-                                 f"{COLOR_MAP.keys()}")
+
+                msg1: str = get_translation("Invalid color argument: ")
+                msg1 += str(args[COLOR_ARG])
+                logger.exception(msg1)
+                msg2: str = get_translation("Permitted color arguments: ")
+                msg2 += str(COLOR_MAP.keys())
+                logger.exception(msg2)
+
+                raise ValueError(msg1)
 
             if len(args) > 2:
 
                 if int(args[LEVEL_ARG]) not in range(int(RGB_MIN),
                                                      int(RGB_MAX)+1):
-                    raise ValueError(f"Invalid Level Argument "
-                                     f"{args[LEVEL_ARG]} Not between "
-                                     f"{RGB_MIN} and {RGB_MAX}")
 
-        logger.info(f"Arguments validated: {args}")
+                    msg1: str = get_translation("Invalid RGB level argument: ")
+                    msg1 += str(args[LEVEL_ARG])
+                    logger.exception(msg1)
+                    msg2: str = get_translation("Allowed from: ")
+                    msg2 += str(RGB_MIN)
+                    msg2 += get_translation(" to: ")
+                    msg2 += str(RGB_MAX)
+                    logger.exception(msg2)
+
+                    raise ValueError(msg1)
+
+        logger.info(get_translation("Arguments validated: ")+str(args))
 
     except ValueError as e:
-        logger.exception(f"Argument Error: {e}. Exiting")
-        raise
+        msg: str = get_translation("Argument Error, Exiting due to ") + str(e)
+        logger.exception(msg)
+        raise ValueError(msg)
 
 ###############################################################################
 
@@ -77,7 +108,7 @@ def process(client, args):
 
     try:
 
-        logger.info(f"Processing {args[MODE_ARG]} mode.")
+        logger.info(get_translation("Processing mode: ")+args[MODE_ARG])
 
         if args[MODE_ARG] == INFO_MODE:
             show_devices_info(client.devices)

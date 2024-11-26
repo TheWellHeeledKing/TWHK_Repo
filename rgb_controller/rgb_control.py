@@ -12,7 +12,7 @@ from rgb_lib.open_RGB_utils import (start_openRGB_server,
 
 from config import (RGB_DEVICE_COUNT)
 
-from utils import validate_args, process
+from utils import (validate_args, process)
 
 #  from rgb_lib.interfaces import show_i2c_interfaces  # Not yet used
 

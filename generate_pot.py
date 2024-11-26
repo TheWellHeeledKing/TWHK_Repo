@@ -11,11 +11,13 @@ pot = polib.POFile()
 # Define the message extraction pattern (looking for get_translation())
 pattern = re.compile(r'get_translation\([\'"](.+?)[\'"]\)')
 
+
 # Function to extract translatable strings from Python files
 def extract_strings_from_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
         return pattern.findall(content)
+
 
 # Scan source directories
 for dir_path in source_dirs:
