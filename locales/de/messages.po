@@ -1,0 +1,93 @@
+#
+msgid ""
+msgstr ""
+
+msgid "Entering Debug Mode"
+msgstr "Debugmodus gestartet"
+
+msgid "No arguments provided"
+msgstr "Keine Argumente eingegeben"
+
+msgid "Too many arguments"
+msgstr "Zu viele argumente eingegben"
+
+msgid "Invalid single argument"
+msgstr "Einzelargument ungültig"
+
+msgid "Permitted"
+msgstr "Erlaubt"
+
+msgid "Invalid first argument"
+msgstr "Ungültige erste Argument"
+
+msgid "Invalid color argument"
+msgstr "Ungültige Farbargument"
+
+msgid "Invalid RGB level argument"
+msgstr "Ungültige RGB-Niveau Argument"
+
+msgid "Allowed from"
+msgstr "Erlaubt von"
+
+msgid "to"
+msgstr "bis"
+
+msgid "Arguments validated"
+msgstr "Argumente sind gültig"
+
+msgid "Processing mode"
+msgstr "Verabeitungsmodus"
+
+msgid "Start OpenRGB Server"
+msgstr "OpenRGB Server starten"
+
+msgid "Wait for server start (secs)"
+msgstr "Warte auf Serverstart (s)"
+
+msgid "OpenRGB server is running"
+msgstr "OpenRGB Server läuft"
+
+msgid "OpenRGB server failed to start"
+msgstr "OpenRGB Serverstart fehlgeschlagen"
+
+msgid "Connected"
+msgstr "Verbunden"
+
+msgid "Devices"
+msgstr "Geräte"
+
+msgid "Failed to connect all devices"
+msgstr "Könnte nicht alle Geräte verbinden"
+
+msgid "Expected"
+msgstr "Erwartet"
+
+msgid "Found"
+msgstr "Gefunden"
+
+msgid "Disconnected from OpenRGB Server"
+msgstr "Vom OpenRGB Server getrennt"
+
+msgid "Wait for OpenRGB Server to terminate (secs)"
+msgstr "Warte bis OpenRGB Server heruntergefahren ist (s)"
+
+msgid "OpenRGB server failed to terminate"
+msgstr "OpenRGB Server könnte nicht heruntergefahren werden"
+
+msgid "OpenRGB server process terminated"
+msgstr "OpenRGB Serverprozess wurde heruntergefahren"
+
+msgid "OpenRGB server not found or already terminated."
+msgstr "OpenRGB Server nicht gefunden oder bereits heruntergefahren"
+
+#: rgb_controller\rgb_control.py
+msgid "Starting, starting, 1,2,3"
+msgstr ""
+
+#: rgb_controller\rgb_control.py
+msgid "Script closing in (secs)"
+msgstr ""
+
+#: rgb_lib\color_utils.py
+msgid "Number of spectrum colors required"
+msgstr ""

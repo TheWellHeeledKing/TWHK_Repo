@@ -3,117 +3,117 @@ msgid ""
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "Starting, starting, 1,2,3"
-msgstr ""
-
-#: rgb_controller\rgb_control.py
 msgid "Entering Debug Mode"
-msgstr ""
-
-#: rgb_controller\rgb_control.py
-msgid "Script closing in (secs)"
-msgstr ""
+msgstr "Entering Debug Mode"
 
 #: rgb_controller\utils.py
 msgid "No arguments provided"
-msgstr ""
+msgstr "No arguments provided"
 
 #: rgb_controller\utils.py
 msgid "Too many arguments"
-msgstr ""
+msgstr "Too many arguments"
 
 #: rgb_controller\utils.py
 msgid "Invalid single argument"
-msgstr ""
+msgstr "Invalid single argument"
 
 #: rgb_controller\utils.py
 msgid "Permitted"
-msgstr ""
+msgstr "Permitted"
 
 #: rgb_controller\utils.py
 msgid "Invalid first argument"
-msgstr ""
+msgstr "Invalid first argument"
 
 #: rgb_controller\utils.py
 msgid "Invalid color argument"
-msgstr ""
+msgstr "Invalid color argument"
 
 #: rgb_controller\utils.py
 msgid "Invalid RGB level argument"
-msgstr ""
+msgstr "Invalid RGB level argument"
 
 #: rgb_controller\utils.py
 msgid "Allowed from"
-msgstr ""
+msgstr "Allowed from"
 
 #: rgb_controller\utils.py
 msgid "to"
-msgstr ""
+msgstr "to"
 
 #: rgb_controller\utils.py
 msgid "Arguments validated"
-msgstr ""
+msgstr "Arguments validated"
 
 #: rgb_controller\utils.py
 msgid "Processing mode"
-msgstr ""
-
-#: rgb_lib\color_utils.py
-msgid "Number of spectrum colors required"
-msgstr ""
+msgstr "Processing mode"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Start OpenRGB Server"
-msgstr ""
+msgstr "Start OpenRGB Server"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Wait for server start (secs)"
-msgstr ""
+msgstr "Wait for server start (secs)"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "OpenRGB server is running"
-msgstr ""
+msgstr "OpenRGB server is running"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "OpenRGB server failed to start"
-msgstr ""
+msgstr "OpenRGB server failed to start"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Connected"
-msgstr ""
+msgstr "Connected"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Devices"
-msgstr ""
+msgstr "Devices"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Failed to connect all devices"
-msgstr ""
+msgstr "Failed to connect all devices"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Expected"
-msgstr ""
+msgstr "Expected"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Found"
-msgstr ""
+msgstr "Found"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Disconnected from OpenRGB Server"
-msgstr ""
+msgstr "Disconnected from OpenRGB Server"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "Wait for OpenRGB Server to terminate (secs)"
-msgstr ""
+msgstr "Wait for OpenRGB Server to terminate (secs)"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "OpenRGB server failed to terminate"
-msgstr ""
+msgstr "OpenRGB server failed to terminate"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "OpenRGB server process terminated"
-msgstr ""
+msgstr "OpenRGB server process terminated"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "OpenRGB server not found or already terminated."
-msgstr ""
+msgstr "OpenRGB server not found or already terminated."
+
+#: rgb_controller\rgb_control.py
+msgid "Starting, starting, 1,2,3"
+msgstr "Starting, starting, 1,2,3"
+
+#: rgb_controller\rgb_control.py
+msgid "Script closing in (secs)"
+msgstr "Script closing in (secs)"
+
+#: rgb_lib\color_utils.py
+msgid "Number of spectrum colors required"
+msgstr "Number of spectrum colors required"

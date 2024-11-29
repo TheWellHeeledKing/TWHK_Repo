@@ -3,7 +3,6 @@ import os
 import time
 import socket
 import subprocess
-import logging
 from .config import (EXE,
                      LOGLEVEL,
                      LOGLEVEL_ARG,
@@ -14,7 +13,10 @@ from .config import (EXE,
                      LOCAL_HOST,
                      PORT)
 
+from common_lib.translator import translate
+
 # Create a logger for this module
+import logging
 logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 ###############################################################################
@@ -31,116 +33,84 @@ def is_openrgb_server_running(host, port):
 
 def start_openRGB_server():
 
-    try:
+    # Construct the full path for OpenRGB
+    open_rgb_full_path = os.path.join(PATH, EXE)
 
-        # Construct the full path for OpenRGB
-        open_rgb_full_path = os.path.join(PATH,
-                                          EXE)
+    OpenRGBServerProcess = subprocess.Popen([open_rgb_full_path,
+                                            SERVER_ARG,
+                                            LOGLEVEL_ARG,
+                                            LOGLEVEL])
 
-        logger.info("Starting subprocess: "
-                    f"{open_rgb_full_path} "
-                    f"{SERVER_ARG} "
-                    f"{LOGLEVEL_ARG} "
-                    f"{LOGLEVEL}")
+    logger.info(f"{translate("Start OpenRGB Server")}: "
+                f"{open_rgb_full_path} "
+                f"{SERVER_ARG} "
+                f"{LOGLEVEL_ARG} "
+                f"{LOGLEVEL}")
+    logger.info(f"{translate("Wait for server start (secs)")}: "
+                f"{STARTUP_WAIT_SECS}")
 
-        try:
-            OpenRGBServerProcess = subprocess.Popen(
-                [open_rgb_full_path,
-                 SERVER_ARG,
-                 LOGLEVEL_ARG,
-                 LOGLEVEL])
+    time.sleep(STARTUP_WAIT_SECS)  # Wait b4 check
 
-        except Exception as exception_msg:
-            logger.exception(f"Failed to start OpenRGB: {exception_msg}")
+    if is_openrgb_server_running(LOCAL_HOST, PORT):
+        logger.info(f"{translate("OpenRGB server is running")}.")
+    else:
+        raise RuntimeError(f"{translate("OpenRGB server failed to start")}.")
 
-        logger.info(f"Waiting {STARTUP_WAIT_SECS} "
-                    "seconds for OpenRGB Server to start.")
-
-        time.sleep(STARTUP_WAIT_SECS)  # Wait b4 check
-
-        if is_openrgb_server_running(LOCAL_HOST,
-                                     PORT):
-            logger.info("OpenRGB server is running and reachable.")
-        else:
-            raise RuntimeError("OpenRGB server failed to start in "
-                               f"{STARTUP_WAIT_SECS}"
-                               " seconds.")
-
-        return (OpenRGBServerProcess)
-
-    except Exception as exception_msg:
-        logger.exception(f"Server Start Error: {exception_msg}")
+    return (OpenRGBServerProcess)
 
 ###############################################################################
 
 
 def connect_openRGB_client(numberOfDevices):
 
-    try:
+    # Connect to OpenRGB server
+    client = OpenRGBClient(LOCAL_HOST, PORT)
 
-        # Connect to OpenRGB server
-        client = OpenRGBClient(LOCAL_HOST,
-                               PORT)
+    if len(client.devices) == numberOfDevices:
 
-        if len(client.devices) == numberOfDevices:
+        logger.info(f"{translate("Connected")}. "
+                    f"{translate("Devices")}: "
+                    f"{len(client.devices)}")
 
-            logger.info("Connected to OpenRGBClient with "
-                        f"{len(client.devices)} devices.")
+    else:
 
-        else:
+        raise RuntimeError(f"{translate("Failed to connect all devices")}. "
+                           f"{translate("Expected")} {numberOfDevices}, "
+                           f"{translate("Found")} {(client.devices)}.")
 
-            raise RuntimeError("OpenRGBClient couldn't connect with all "
-                               f"{numberOfDevices} devices.")
-
-        return (client)
-
-    except Exception as exception_msg:
-
-        logger.exception(f"OpenRGBClient connection failed: {exception_msg}:")
+    return (client)
 
 ###############################################################################
 
 
 def disconnect_openRGB_client(OpenRGB_client):
 
-    try:
-
-        OpenRGB_client.disconnect()
-        logger.info("Disconnected from OpenRGB Server")
-
-    except Exception as exception_msg:
-        logger.exception(f"{exception_msg}")
+    OpenRGB_client.disconnect()
+    logger.info(f"{translate("Disconnected from OpenRGB Server")}.")
 
 ###############################################################################
 
 
 def terminate_openRGB_server(OpenRGB_server_process):
 
-    try:
+    if is_openrgb_server_running(LOCAL_HOST, PORT):
 
-        if is_openrgb_server_running(LOCAL_HOST,
-                                     PORT):
+        OpenRGB_server_process.terminate()
 
-            OpenRGB_server_process.terminate()
+        logger.info(
+            f"{translate('Wait for OpenRGB Server to terminate (secs)')}: "
+            f"{TERMINATE_WAIT_SECS}")
 
-            logger.info("Waiting "
-                        f"{TERMINATE_WAIT_SECS} "
-                        "seconds for OpenRGB Server to terminate.")
+        # Wait before checking
+        time.sleep(TERMINATE_WAIT_SECS)
 
-            # Wait before checking
-            time.sleep(TERMINATE_WAIT_SECS)
-
-            if is_openrgb_server_running(LOCAL_HOST,
-                                         PORT):
-                raise RuntimeError("OpenRGB server failed to terminate.")
-            else:
-                logger.info("OpenRGB server process terminated.")
-
+        if is_openrgb_server_running(LOCAL_HOST, PORT):
+            raise RuntimeError(
+                f"{translate("OpenRGB server failed to terminate")}.")
         else:
+            logger.info(f"{translate("OpenRGB server process terminated")}.")
 
-            raise RuntimeError("OpenRGB server not found / "
-                               "already terminated.")
+    else:
 
-    except Exception as exception_msg:
-        logger.error(f"{exception_msg}")
-        raise
+        raise RuntimeError(
+            f"{translate("OpenRGB server not found or already terminated.")}")

@@ -10,9 +10,7 @@ logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 
 def load_translation_file(mo_path_and_filename: str) -> polib.MOFile:
-    """
-    Loads the .mo file
-    """
+
     logger.debug(f"Attempting to load MO file: {mo_path_and_filename}")
     try:
         # Load the .mo file
@@ -28,7 +26,7 @@ def load_translation_file(mo_path_and_filename: str) -> polib.MOFile:
 ###############################################################################
 
 
-def get_translation(msgid: str) -> str:
+def translate(msgid: str) -> str:
 
     try:
 

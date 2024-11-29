@@ -3,6 +3,9 @@ import colorsys
 from openrgb.utils import RGBColor
 from .config import COLOR_MAP, H_MIN, H_MAX, ROUND_DIGITS
 from decimal import Decimal, ROUND_DOWN
+
+from common_lib.translator import translate
+
 import logging
 
 # Create a logger for this module
@@ -13,7 +16,8 @@ logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 
 def get_RGB_color_spectrum(num_colors):
 
-    logger.debug(f"Get {num_colors} Spectrum colors as RGB colors")
+    logger.debug(f"{translate("Number of spectrum colors required")}: "
+                 f"{num_colors}")
 
     RGBcolors = []
 
