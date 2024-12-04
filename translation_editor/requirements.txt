@@ -1,0 +1,84 @@
+1. Application Purpose:
+
+    The goal is to create a translation editor for managing translation files, allowing editing of content while supporting filtering and sorting for easy navigation.
+    The application should be dynamic and easy to use for adding, editing, and deleting translations.
+
+2. Core Features:
+
+    Translation File Management:
+        The app should allow opening, viewing, and saving translation files in CSV format (or potentially other formats in the future).
+        Rows represent individual translation entries, and columns correspond to different language versions.
+
+    Dynamic Editing:
+        The table should be editable directly by the user. Changes made in the table should be reflected in the underlying data model immediately.
+        The user should be able to edit the translation entries easily in-place (text editing of cells).
+
+    Filtering:
+        Filters should be available for column data, enabling the user to filter rows based on their content.
+        The current filtering logic (which is complex and carefully designed) should be maintained when switching to tkintertable, ensuring the filters can still work dynamically with the table.
+        Filters should be accessible and configurable, with multi-column filtering and the ability to clear filters.
+
+    Sorting:
+        Sorting of the columns should be supported, so the user can click on a column header to sort translations alphabetically (ascending/descending).
+
+3. Table Design:
+
+    Dynamic Table (tkintertable):
+        The table should use tkintertable for dynamic editing of content, replacing ttk widgets.
+        It must support editable cells, where each row represents a translation entry, and users can directly input or edit the content.
+        Data validation (if needed) should be incorporated into the table to prevent invalid inputs.
+
+    Table Structure:
+        The table should display multiple columns for different language versions and possibly include columns for other data points (e.g., context, comments).
+        The user should be able to resize columns as needed to accommodate text.
+
+4. UI Components:
+
+    Filters UI:
+        Filters should be displayed in a separate filter section (either above or beside the table), with input fields for text-based filters or dropdowns for category-based filtering.
+        The user should be able to select and modify multiple filters at the same time and clear filters when needed.
+
+    Buttons and Navigation:
+        Buttons should be clearly labeled for actions like open, save, and filter reset.
+        The application should support basic keyboard shortcuts (e.g., Ctrl + S for saving, Ctrl + O for opening a file).
+
+5. Data Integrity:
+
+    Any changes made to the table should be immediately reflected in the underlying data model (e.g., the dictionary or DataFrame representing the translations).
+    The system should prevent any loss of data if there’s an issue (e.g., if a user forgets to save their changes before closing the app).
+
+6. Performance Considerations:
+
+    The app should be responsive even with large translation files.
+    Filtering, sorting, and editing should not cause noticeable lag for the user.
+
+7. Error Handling:
+
+    Errors, such as invalid data input or file loading issues, should be properly caught and displayed to the user in a clear and user-friendly way (e.g., through pop-up error messages).
+    The app should handle cases where a file is not loaded or saved correctly.
+
+8. Additional Considerations:
+
+    The UI should be consistent with other Python Tkinter-based applications (e.g., using ttk for consistent styling).
+    Cross-platform compatibility (Windows/Linux/Mac) should be ensured, with no reliance on external dependencies that could break the app across platforms.
+
+Refinements Based on Code Review:
+
+From the current implementation, here's what I’ve refined and ensured for the app’s functionality:
+
+    Filters Logic:
+        Filters should still allow multi-column filtering.
+        The filtering logic must be preserved as is from the current working state. The main goal is to integrate this logic within the tkintertable framework without altering its functionality.
+
+    Dynamic Editing:
+        Ensure that the user can directly edit the content of each cell in the table (with any data entry validated before accepting the change).
+        The current design allows direct editing of text for translation entries, so this must be carried over.
+
+    Data Model Integration:
+        The underlying data model (likely a dictionary or a DataFrame) should continue to store the translations.
+        Changes made in the table should update the model automatically to reflect any edits, deletions, or additions.
+
+Next Steps:
+
+    Confirm the Requirements:
+        Go through this list to confirm or modify any of these requirements. Once we’re aligned, I can start working on implementing them or making adjustments based on what you need.
