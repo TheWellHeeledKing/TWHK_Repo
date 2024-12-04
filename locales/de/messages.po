@@ -2,38 +2,11 @@
 msgid ""
 msgstr ""
 
-msgid "Entering Debug Mode"
-msgstr "Debugmodus gestartet"
-
-msgid "No arguments provided"
-msgstr "Keine Argumente eingegeben"
-
-msgid "Too many arguments"
-msgstr "Zu viele argumente eingegben"
-
-msgid "Invalid single argument"
-msgstr "Einzelargument ungültig"
-
 msgid "Permitted"
 msgstr "Erlaubt"
 
-msgid "Invalid first argument"
-msgstr "Ungültige erste Argument"
-
-msgid "Invalid color argument"
-msgstr "Ungültige Farbargument"
-
-msgid "Invalid RGB level argument"
-msgstr "Ungültige RGB-Niveau Argument"
-
 msgid "Allowed from"
 msgstr "Erlaubt von"
-
-msgid "to"
-msgstr "bis"
-
-msgid "Arguments validated"
-msgstr "Argumente sind gültig"
 
 msgid "Processing mode"
 msgstr "Verabeitungsmodus"
@@ -81,13 +54,117 @@ msgid "OpenRGB server not found or already terminated."
 msgstr "OpenRGB Server nicht gefunden oder bereits heruntergefahren"
 
 #: rgb_controller\rgb_control.py
-msgid "Starting, starting, 1,2,3"
-msgstr ""
-
-#: rgb_controller\rgb_control.py
-msgid "Script closing in (secs)"
-msgstr ""
+msgid "SCRIPT_CLOSE_MSG_ID"
+msgstr "Skript wird beendet. Wartezeit (s)"
 
 #: rgb_lib\color_utils.py
 msgid "Number of spectrum colors required"
+msgstr "Anzahl Spektrumfarben benötigt"
+
+#: rgb_controller\rgb_control.py
+msgid "START_MSG_ID"
+msgstr "Starte"
+
+#: rgb_controller\rgb_control.py
+msgid "DEBUG_MODE_MSG_ID"
+msgstr "Startet in Debugmodus"
+
+#: rgb_controller\utils.py
+msgid "NO_ARGS_MSG_ID"
+msgstr "Keine Argumente eingegeben"
+
+#: rgb_controller\utils.py
+msgid "TOO_MANY_ARGS_MSG_ID"
+msgstr "Zu viele argumente eingegben"
+
+#: rgb_controller\utils.py
+msgid "INVALID_SINGLE_ARG_MSG_ID"
+msgstr "Einzelargument ungültig"
+
+#: rgb_controller\utils.py
+msgid "PERMITTED_MSG_ID"
+msgstr "Erlaubt"
+
+#: rgb_controller\utils.py
+msgid "INVALID_FIRST_ARG_MSG_ID"
+msgstr "Ungültige erste Argument"
+
+#: rgb_controller\utils.py
+msgid "INVALID_COLOR_ARG_MSG_ID"
+msgstr "Ungültige Farbargument"
+
+#: rgb_controller\utils.py
+msgid "INVALID_RGB_LEVEL_MSG_ID"
+msgstr "Ungültige RGB-Niveau Argument"
+
+#: rgb_controller\utils.py
+msgid "ALLOWED_FROM_MSG_ID"
+msgstr "Erlaubt von"
+
+#: rgb_controller\utils.py
+msgid "TO_MSG_ID"
+msgstr "bis"
+
+#: rgb_controller\utils.py
+msgid "ARGS_VALIDATED_MSG_ID"
+msgstr "Argumente sind gültig"
+
+#: rgb_controller\utils.py
+msgid "INFO_MSG_PROCESSING_MODE"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_ServerStart"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_ServerWait"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_ServerRunning"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "ERROR_ServerStartFailed"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_Connected"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_Devices"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "ERROR_FailedConnectDevices"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_Expected"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_Found"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_ServerDisconnected"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_ServerStopWait"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "ERROR_ServerStopFailed"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "INFO_ServerStopped"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "ERROR_ServerNotRunning"
 msgstr ""

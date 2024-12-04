@@ -24,8 +24,8 @@ logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 if __name__ == MAIN:
 
     # Log the script start with script name
-    logger.info(f"{translate("Starting, starting, 1,2,3")}: {sys.argv[0:]}")
-    logger.debug(translate("Entering Debug Mode"))
+    logger.info(f"{translate("START_MSG_ID")}: {sys.argv[0:]}")
+    logger.debug(translate("DEBUG_MODE_MSG_ID"))
 
     try:
 
@@ -47,6 +47,6 @@ if __name__ == MAIN:
         logger.exception(str(e))
 
     finally:
-        logger_msg: str = translate("Script closing in (secs)")
+        logger_msg: str = translate("SCRIPT_CLOSE_MSG_ID")
         logger.info(f"{logger_msg} {CLOSE_SCRIPT_WAIT_SECS}")
         time.sleep(CLOSE_SCRIPT_WAIT_SECS)  # Wait before closing

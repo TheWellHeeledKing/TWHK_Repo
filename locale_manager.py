@@ -23,12 +23,12 @@ def generate_pot():
                         content = f.read()
                         matches = TRANSLATE_PATTERN.findall(content)
                         for match in matches:
-                            entry = polib.POEntry(
-                                msgid=match,
-                                msgstr="",
-                                occurrences=[(file_path, 0)]  # Dummy line numbers
-                            )
-                            if not pot.find(entry.msgid):
+                            if not pot.find(match):
+                                entry = polib.POEntry(
+                                        msgid=match,
+                                        msgstr="",
+                                        occurrences=[(file_path, 0)]  # Dummy line numbers
+                                    )
                                 pot.append(entry)
 
     os.makedirs(LOCALES_PATH, exist_ok=True)
@@ -39,6 +39,7 @@ def generate_pot():
 # Create or update .po files
 def create_or_update_po(language_code):
     po_file_path = os.path.join(LOCALES_PATH, language_code, "messages.po")
+    print(f"Creating/Updating: {po_file_path}")
     os.makedirs(os.path.dirname(po_file_path), exist_ok=True)
 
     # Load .pot file and existing .po file
@@ -47,21 +48,21 @@ def create_or_update_po(language_code):
 
     # Add missing msgid from the .pot file to .po
     for pot_entry in pot:
-        if not po.find(pot_entry.msgid):  # If msgid does not exist in the .po file
+        if po.find(pot_entry.msgid):  # If msgid exists in the .po file
+            print(f"Exists: {pot_entry.msgid} {pot_entry.msgstr}")
+        else:
             po.append(pot_entry)
-            print(f"Added msgid: {pot_entry.msgid}")
+            print(f"Added: {pot_entry.msgid} {pot_entry.msgstr}")
 
     # Remove obsolete entries (those not in the .pot file)
+    print(f"Checking for obsolete msgids: remove if exists in {po_file_path}, no longer in {POT_FILE_PATH}")
+
     for entry in po:
-        if not pot.find(entry.msgid):
-            po.remove(entry)
-            print(f"Removed {entry.msgid}")
-
-    # Special handling for English: Copy msgid to msgstr
-    if language_code == "en":
-        for entry in po:
-            entry.msgstr = entry.msgid
-
+        if pot.find(entry.msgid):
+            print(f"Kept: {entry.msgid} {entry.msgstr}")
+        else:
+            #  po.remove(entry)
+            print(f"{entry.msgid} {entry.msgstr} deprecated -> delete translation or transfer to replacement msg")
     # Save the updated .po file
     po.save(po_file_path)
     print(f"Updated {po_file_path}")
@@ -92,12 +93,12 @@ def check_mo(language_code):
             if data.startswith(b'\xde\x12\x04\x95'):  # MO file magic number
                 print(f"{mo_file_path} is a valid .mo file.")
 
-                po = polib.mofile(mo_file_path)
+                mo = polib.mofile(mo_file_path)
                 print("MO file loaded successfully. Checking contents...")
 
                 # Print the entries to verify they are loaded
-                for entry in po:
-                    print(f"msgid: {entry.msgid}, msgstr: {entry.msgstr}")
+                for entry in mo:
+                    print(f"msgid: {entry.msgid:<{50}}, msgstr: {entry.msgstr}")
                 
             else:
                 print(f"{mo_file_path} is NOT a valid .mo file.")

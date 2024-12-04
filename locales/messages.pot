@@ -3,59 +3,59 @@ msgid ""
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "Starting, starting, 1,2,3"
+msgid "START_MSG_ID"
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "Entering Debug Mode"
+msgid "DEBUG_MODE_MSG_ID"
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "Script closing in (secs)"
+msgid "SCRIPT_CLOSE_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "No arguments provided"
+msgid "NO_ARGS_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Too many arguments"
+msgid "TOO_MANY_ARGS_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Invalid single argument"
+msgid "INVALID_SINGLE_ARG_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Permitted"
+msgid "PERMITTED_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Invalid first argument"
+msgid "INVALID_FIRST_ARG_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Invalid color argument"
+msgid "INVALID_COLOR_ARG_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Invalid RGB level argument"
+msgid "INVALID_RGB_LEVEL_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Allowed from"
+msgid "ALLOWED_FROM_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "to"
+msgid "TO_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Arguments validated"
+msgid "ARGS_VALIDATED_MSG_ID"
 msgstr ""
 
 #: rgb_controller\utils.py
-msgid "Processing mode"
+msgid "INFO_MSG_PROCESSING_MODE"
 msgstr ""
 
 #: rgb_lib\color_utils.py
@@ -63,57 +63,57 @@ msgid "Number of spectrum colors required"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Start OpenRGB Server"
+msgid "INFO_ServerStart"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Wait for server start (secs)"
+msgid "INFO_ServerWait"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server is running"
+msgid "INFO_ServerRunning"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server failed to start"
+msgid "ERROR_ServerStartFailed"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Connected"
+msgid "INFO_Connected"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Devices"
+msgid "INFO_Devices"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Failed to connect all devices"
+msgid "ERROR_FailedConnectDevices"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Expected"
+msgid "WORD_Expected"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Found"
+msgid "WORD_Found"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Disconnected from OpenRGB Server"
+msgid "INFO_ServerDisconnected"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "Wait for OpenRGB Server to terminate (secs)"
+msgid "INFO_ServerStopWait"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server failed to terminate"
+msgid "ERROR_ServerStopFailed"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server process terminated"
+msgid "INFO_ServerStopped"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server not found or already terminated."
+msgid "ERROR_ServerNotRunning"
 msgstr ""

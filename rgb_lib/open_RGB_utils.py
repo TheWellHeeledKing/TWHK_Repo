@@ -41,20 +41,20 @@ def start_openRGB_server():
                                             LOGLEVEL_ARG,
                                             LOGLEVEL])
 
-    logger.info(f"{translate("Start OpenRGB Server")}: "
+    logger.info(f"{translate("INFO_ServerStart")}: "
                 f"{open_rgb_full_path} "
                 f"{SERVER_ARG} "
                 f"{LOGLEVEL_ARG} "
                 f"{LOGLEVEL}")
-    logger.info(f"{translate("Wait for server start (secs)")}: "
+    logger.info(f"{translate("INFO_ServerWait")}: "
                 f"{STARTUP_WAIT_SECS}")
 
     time.sleep(STARTUP_WAIT_SECS)  # Wait b4 check
 
     if is_openrgb_server_running(LOCAL_HOST, PORT):
-        logger.info(f"{translate("OpenRGB server is running")}.")
+        logger.info(f"{translate("INFO_ServerRunning")}.")
     else:
-        raise RuntimeError(f"{translate("OpenRGB server failed to start")}.")
+        raise RuntimeError(f"{translate("ERROR_ServerStartFailed")}.")
 
     return (OpenRGBServerProcess)
 
@@ -68,15 +68,15 @@ def connect_openRGB_client(numberOfDevices):
 
     if len(client.devices) == numberOfDevices:
 
-        logger.info(f"{translate("Connected")}. "
-                    f"{translate("Devices")}: "
+        logger.info(f"{translate("INFO_Connected")}. "
+                    f"{translate("INFO_Devices")}: "
                     f"{len(client.devices)}")
 
     else:
 
-        raise RuntimeError(f"{translate("Failed to connect all devices")}. "
-                           f"{translate("Expected")} {numberOfDevices}, "
-                           f"{translate("Found")} {(client.devices)}.")
+        raise RuntimeError(f"{translate("ERROR_FailedConnectDevices")}. "
+                           f"{translate("WORD_Expected")} {numberOfDevices}, "
+                           f"{translate("WORD_Found")} {(client.devices)}.")
 
     return (client)
 
@@ -86,7 +86,7 @@ def connect_openRGB_client(numberOfDevices):
 def disconnect_openRGB_client(OpenRGB_client):
 
     OpenRGB_client.disconnect()
-    logger.info(f"{translate("Disconnected from OpenRGB Server")}.")
+    logger.info(f"{translate("INFO_ServerDisconnected")}.")
 
 ###############################################################################
 
@@ -98,7 +98,7 @@ def terminate_openRGB_server(OpenRGB_server_process):
         OpenRGB_server_process.terminate()
 
         logger.info(
-            f"{translate('Wait for OpenRGB Server to terminate (secs)')}: "
+            f"{translate("INFO_ServerStopWait")}: "
             f"{TERMINATE_WAIT_SECS}")
 
         # Wait before checking
@@ -106,11 +106,11 @@ def terminate_openRGB_server(OpenRGB_server_process):
 
         if is_openrgb_server_running(LOCAL_HOST, PORT):
             raise RuntimeError(
-                f"{translate("OpenRGB server failed to terminate")}.")
+                f"{translate("ERROR_ServerStopFailed")}.")
         else:
-            logger.info(f"{translate("OpenRGB server process terminated")}.")
+            logger.info(f"{translate("INFO_ServerStopped")}.")
 
     else:
 
         raise RuntimeError(
-            f"{translate("OpenRGB server not found or already terminated.")}")
+            f"{translate("ERROR_ServerNotRunning")}.")
