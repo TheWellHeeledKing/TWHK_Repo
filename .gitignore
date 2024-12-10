@@ -12,8 +12,11 @@ translation_editor_clone/
 # Just for communicating the directory structure to ChatGPT
 directory_structure.txt
 
-# Don't even know what this is! Probably relevant to the PortfolioManagement project.
+# Relevant to the PortfolioManagement project.
 isin_list.json
+
+# Temp copy of RGB_ServerStarter.py
+RGB_ServerStarter_copy.py
 
 #Ignore stuff that the template somehow missed
 __pycache__
