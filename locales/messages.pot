@@ -3,15 +3,7 @@ msgid ""
 msgstr ""
 
 #: rgb_controller\rgb_control.py
-msgid "START_MSG_ID"
-msgstr ""
-
-#: rgb_controller\rgb_control.py
-msgid "DEBUG_MODE_MSG_ID"
-msgstr ""
-
-#: rgb_controller\rgb_control.py
-msgid "SCRIPT_CLOSE_MSG_ID"
+msgid "TEXT_RGBControlFailed"
 msgstr ""
 
 #: rgb_controller\utils.py
@@ -58,8 +50,44 @@ msgstr ""
 msgid "INFO_MSG_PROCESSING_MODE"
 msgstr ""
 
+#: common_lib\utils.py
+msgid "START_MSG_ID"
+msgstr ""
+
+#: common_lib\utils.py
+msgid "DEBUG_MODE_MSG_ID"
+msgstr ""
+
+#: common_lib\utils.py
+msgid "SCRIPT_CLOSE_MSG_ID"
+msgstr ""
+
 #: rgb_lib\color_utils.py
 msgid "Number of spectrum colors required"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_OpenRGBServerRunning"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_OpenRGBServerNotRunning"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_ServerAvailable"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_host"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_port"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_ServerNotAvailable"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
@@ -68,14 +96,6 @@ msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_ServerWait"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_ServerRunning"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "ERROR_ServerStartFailed"
 msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
@@ -116,4 +136,60 @@ msgstr ""
 
 #: rgb_lib\open_RGB_utils.py
 msgid "ERROR_ServerNotRunning"
+msgstr ""
+
+#: rgb_lib\RGB_ServerStarter.py
+msgid "TEXT_ServerStartFailed"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_ProcessStartError"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_CheckProcessRunning"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_GettingProcessDictionary"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_InvalidProcIdType"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_InvalidProcNameType"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_InvalidProcObject"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_DuplProcessName"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_AddedProcToDict"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_PoppedDuplProcFromDict"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "TEXT_ProcessAccessError"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "WORD_Getting"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "WORD_Process"
+msgstr ""
+
+#: system_lib\utils.py
+msgid "WORD_Not"
 msgstr ""

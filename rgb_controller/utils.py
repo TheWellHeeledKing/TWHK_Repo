@@ -20,54 +20,53 @@ logger = logging.getLogger(__name__)  # __name__ gives "package.module"
 ###############################################################################
 
 
-def raiseException(msg: str, exception_type: Exception):
-
-    logger.exception(msg)
-    raise exception_type(msg, ValueError)
-
-###############################################################################
-
-
-def validate_args(args):
+def validate_args(args) -> bool:
 
     if len(args) < MIN_ARGS:
-        raiseException(translate("NO_ARGS_MSG_ID"), ValueError)
+        logger.exception(translate("NO_ARGS_MSG_ID"))
+        return False
 
     if len(args) > MAX_ARGS:
-        raiseException(translate("TOO_MANY_ARGS_MSG_ID"), ValueError)
+        logger.exception(translate("TOO_MANY_ARGS_MSG_ID"))
+        return False
 
     if len(args) == 1 and (args[MODE_ARG] not in ARG_MODES[SINGLE_ARG_MODES]):
-        raiseException(f"{translate("INVALID_SINGLE_ARG_MSG_ID")}: "
-                       f"'{args[MODE_ARG]}'. "
-                       f"{translate("PERMITTED_MSG_ID")}: "
-                       f"{ARG_MODES[SINGLE_ARG_MODES]}", ValueError)
+        logger.exception(f"{translate("INVALID_SINGLE_ARG_MSG_ID")}: "
+                         f"'{args[MODE_ARG]}'. "
+                         f"{translate("PERMITTED_MSG_ID")}: "
+                         f"{ARG_MODES[SINGLE_ARG_MODES]}")
+        return False
 
     if len(args) == 2:
         if args[MODE_ARG] not in ARG_MODES[MULTI_ARG_MODES]:
-            raiseException(f"{translate("INVALID_FIRST_ARG_MSG_ID")}: "
-                           f"{args[MODE_ARG]}. "
-                           f"{translate("PERMITTED_MSG_ID")}: "
-                           f"{ARG_MODES[MULTI_ARG_MODES]}", ValueError)
+            logger.exception(f"{translate("INVALID_FIRST_ARG_MSG_ID")}: "
+                             f"{args[MODE_ARG]}. "
+                             f"{translate("PERMITTED_MSG_ID")}: "
+                             f"{ARG_MODES[MULTI_ARG_MODES]}")
+            return False
 
         if args[COLOR_ARG] not in COLOR_MAP.keys():
-            raiseException(f"{translate("INVALID_COLOR_ARG_MSG_ID")}: "
-                           f"'{args[COLOR_ARG]}'. "
-                           f"{translate("PERMITTED_MSG_ID")}: "
-                           f"{str(list(COLOR_MAP.keys()))}", ValueError)
+            logger.exception(f"{translate("INVALID_COLOR_ARG_MSG_ID")}: "
+                             f"'{args[COLOR_ARG]}'. "
+                             f"{translate("PERMITTED_MSG_ID")}: "
+                             f"{str(list(COLOR_MAP.keys()))}")
+            return False
 
     if len(args) > 2:
         if int(args[LEVEL_ARG]) not in range((RGB_MIN), (RGB_MAX)+1):
-            raiseException(f"{translate("INVALID_RGB_LEVEL_MSG_ID")}: "
-                           f"{args[LEVEL_ARG]}. "
-                           f"{translate("ALLOWED_FROM_MSG_ID")}: {RGB_MIN} "
-                           f"{translate("TO_MSG_ID")}: {RGB_MAX}", ValueError)
+            logger.exception(f"{translate("INVALID_RGB_LEVEL_MSG_ID")}: "
+                             f"{args[LEVEL_ARG]}. "
+                             f"{translate("ALLOWED_FROM_MSG_ID")}: {RGB_MIN} "
+                             f"{translate("TO_MSG_ID")}: {RGB_MAX}")
+            return False
 
     logger.info(f"{translate("ARGS_VALIDATED_MSG_ID")}: {(args)}")
+    return True
 
 ###############################################################################
 
 
-def process(client, args):
+def set_rgb_lighting(client, args):
 
     logger.info(f"{translate("INFO_MSG_PROCESSING_MODE")}: {args[MODE_ARG]}")
 

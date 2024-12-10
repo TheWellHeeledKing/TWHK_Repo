@@ -113,13 +113,36 @@ def set_devices_to_bespoke_lighting(devices):
 ###############################################################################
 
 
+def set_devices_to_clear(devices):
+
+    try:
+
+        logger.info("Setting devices to clear")
+
+        for device in devices:
+
+            logger.debug(f"Setting device {device.name} to clear")
+
+            for zone in device.zones:
+                logger.debug(f"Setting zone {zone.name} to clear")
+                zone.clear()
+
+    except Exception as e:
+
+        logger.error(f"Error occurred trying to set bespoke lighting: {e}")
+        raise
+
+###############################################################################
+
+
 def set_devices_colors_by_mode(client, mode):
 
     try:
 
         if mode == "Clear":
             # Turn off all LEDs
-            client.clear()
+            # client.clear() is hit and miss, not always turning off all LEDs
+            set_devices_to_clear(client.devices)
         elif mode == "Spectrum":
             set_devices_to_spectrum(client.devices)
         elif mode == "Breathing":

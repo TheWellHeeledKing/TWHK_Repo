@@ -61,7 +61,7 @@ def create_or_update_po(language_code):
         if pot.find(entry.msgid):
             print(f"Kept: {entry.msgid} {entry.msgstr}")
         else:
-            #  po.remove(entry)
+            po.remove(entry)
             print(f"{entry.msgid} {entry.msgstr} deprecated -> delete translation or transfer to replacement msg")
     # Save the updated .po file
     po.save(po_file_path)

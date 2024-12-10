@@ -6,74 +6,6 @@ msgstr ""
 msgid "DEBUG_MODE_MSG_ID"
 msgstr "Entering Debug Mode"
 
-#: rgb_controller\utils.py
-msgid "Permitted"
-msgstr ""
-
-#: rgb_controller\utils.py
-msgid "Allowed from"
-msgstr "Allowed from"
-
-#: rgb_controller\utils.py
-msgid "Processing mode"
-msgstr "Processing mode"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Start OpenRGB Server"
-msgstr "Start OpenRGB Server"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Wait for server start (secs)"
-msgstr "Wait for server start (secs)"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server is running"
-msgstr "OpenRGB server is running"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server failed to start"
-msgstr "OpenRGB server failed to start"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Connected"
-msgstr "Connected"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Devices"
-msgstr "Devices"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Failed to connect all devices"
-msgstr "Failed to connect all devices"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Expected"
-msgstr "Expected"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Found"
-msgstr "Found"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Disconnected from OpenRGB Server"
-msgstr "Disconnected from OpenRGB Server"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "Wait for OpenRGB Server to terminate (secs)"
-msgstr "Wait for OpenRGB Server to terminate (secs)"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server failed to terminate"
-msgstr "OpenRGB server failed to terminate"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server process terminated"
-msgstr "OpenRGB server process terminated"
-
-#: rgb_lib\open_RGB_utils.py
-msgid "OpenRGB server not found or already terminated."
-msgstr "OpenRGB server not found or already terminated."
-
 #: rgb_controller\rgb_control.py
 msgid "START_MSG_ID"
 msgstr "Starting"
@@ -128,60 +60,136 @@ msgstr "Arguments validated"
 
 #: rgb_controller\utils.py
 msgid "INFO_MSG_PROCESSING_MODE"
-msgstr ""
+msgstr "Processing mode"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_ServerStart"
-msgstr ""
+msgstr "Start OpenRGB Server"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_ServerWait"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_ServerRunning"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "ERROR_ServerStartFailed"
-msgstr ""
+msgstr "Wait for server start (secs)"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_Connected"
-msgstr ""
+msgstr "Connected"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_Devices"
-msgstr ""
+msgstr "Devices"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "ERROR_FailedConnectDevices"
-msgstr ""
+msgstr "Failed to connect all devices"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "WORD_Expected"
-msgstr ""
+msgstr "Expected"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "WORD_Found"
-msgstr ""
+msgstr "Found"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_ServerDisconnected"
-msgstr ""
+msgstr "Disconnected from OpenRGB Server"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_ServerStopWait"
-msgstr ""
+msgstr "Wait for OpenRGB Server to terminate (secs)"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "ERROR_ServerStopFailed"
-msgstr ""
+msgstr "OpenRGB server failed to terminate"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "INFO_ServerStopped"
-msgstr ""
+msgstr "OpenRGB server process terminated"
 
 #: rgb_lib\open_RGB_utils.py
 msgid "ERROR_ServerNotRunning"
-msgstr ""
+msgstr "OpenRGB server not found or already terminated"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_host"
+msgstr "Host"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_port"
+msgstr "Port"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_Not"
+msgstr "Not"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_Getting"
+msgstr "Getting"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "WORD_Process"
+msgstr "Process"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_GettingProcessDictionary"
+msgstr "Getting process dictionary"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_InvalidProcIdType"
+msgstr "Invalid process id type"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_InvalidProcObject"
+msgstr "Invalid process object"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_ProcessAccessError"
+msgstr "An error occurred while getting processes for the process dictionary"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_ServerNotAvailable"
+msgstr "Server is not available"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_ServerAvailable"
+msgstr "Server is available"
+
+#: rgb_controller\rgb_control.py
+msgid "TEXT_ServerStartFailed"
+msgstr "Failed to start server"
+
+#: system_lib\utils.py
+msgid "TEXT_InvalidProcNameType"
+msgstr "Process name is an invalid type"
+
+#: system_lib\utils.py
+msgid "TEXT_DuplProcessName"
+msgstr "Duplicate process name"
+
+#: system_lib\utils.py
+msgid "TEXT_AddedProcToDict"
+msgstr "Process added to process dictionary"
+
+#: system_lib\utils.py
+msgid "TEXT_PoppedDuplProcFromDict"
+msgstr "Process with duplicate names removed from process dictionary"
+
+#: rgb_controller\rgb_control.py
+msgid "TEXT_RGBControlFailed"
+msgstr "Could not set RGB lighting"
+
+#: system_lib\utils.py
+msgid "TEXT_ProcessStartError"
+msgstr "Process start failed"
+
+#: system_lib\utils.py
+msgid "TEXT_CheckProcessRunning"
+msgstr "Check if process is running"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_OpenRGBServerRunning"
+msgstr "OpenRGB Server is running"
+
+#: rgb_lib\open_RGB_utils.py
+msgid "TEXT_OpenRGBServerNotRunning"
+msgstr "OpenRGB Server is not running"

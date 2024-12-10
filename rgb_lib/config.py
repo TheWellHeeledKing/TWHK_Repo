@@ -9,8 +9,9 @@ LOGLEVEL = "6"
 STARTUP_WAIT_SECS = 8
 TERMINATE_WAIT_SECS = 1
 
-LOCAL_HOST = "localhost"
-PORT = 6742
+HOST: str = "localhost"
+PORT: int = 6742
+SOCKET_TIMEOUT_SECS: int = 10
 
 DIRECT = "Direct"
 

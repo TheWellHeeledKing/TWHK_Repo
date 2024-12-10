@@ -33,7 +33,7 @@ def translate(msgid: str) -> str:
         # Try to find the translation for the msgid
         entry = common_lib.TRANSLATION_FILE.find(msgid)
         if entry:
-            logger.debug(f"Translation found for '{msgid}': {entry.msgstr}")
+            # logger.debug(f"Translation found for '{msgid}': {entry.msgstr}")
             return entry.msgstr  # Return the translated string
         else:
             logger.warning(f"Translation not found for: {msgid}")
