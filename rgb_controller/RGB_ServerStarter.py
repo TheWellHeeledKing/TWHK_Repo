@@ -44,7 +44,7 @@ class RGBServerGUI(QMainWindow):
 
         # System tray
         self.tray_icon = QSystemTrayIcon(self)
-        self.tray_icon.setIcon(QIcon("icon.png"))  # Replace "icon.png" with a valid path
+        self.tray_icon.setIcon(QIcon(r"C:\Users\Mike\Software\Python\TWHK_Repository\TWHK_logo_icon.png"))
         self.tray_icon.setToolTip("OpenRGB Server")
 
         tray_menu = QMenu()
@@ -56,6 +56,14 @@ class RGBServerGUI(QMainWindow):
 
         self.tray_icon.setContextMenu(tray_menu)
         self.tray_icon.activated.connect(self.show_from_tray)
+
+        if not QSystemTrayIcon.isSystemTrayAvailable():
+            logger.error("System tray is not available on this system.")
+            QMessageBox.critical(self, "Error", "System tray is not available.")
+        else:
+            logger.info("System tray is available, initializing.")
+            self.tray_icon.showMessage("OpenRGB Server", "Application running in the system tray.")
+
         self.tray_icon.show()
 
         self.server_proc = None  # Process for OpenRGB server
@@ -93,10 +101,16 @@ class RGBServerGUI(QMainWindow):
         QApplication.quit()
 
     def closeEvent(self, event: QCloseEvent):
-        """Minimize to tray instead of closing."""
-        event.ignore()
-        self.hide()
-        self.tray_icon.showMessage("OpenRGB Server", "Application minimized to tray.")
+        """Handle window close event."""
+        if self.tray_icon.isVisible():
+            event.ignore()
+            self.hide()
+            self.tray_icon.showMessage(
+                "OpenRGB Server",
+                "Application minimized to system tray. Right-click the tray icon for options.",
+                QSystemTrayIcon.Information,
+                3000  # Duration in milliseconds
+            )
 
 
 if __name__ == MAIN:
