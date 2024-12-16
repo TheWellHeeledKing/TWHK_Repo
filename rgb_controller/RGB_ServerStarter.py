@@ -7,7 +7,7 @@ from psutil import Process
 from logging import (getLogger, Logger)
 from typing import Dict
 
-from common_lib.config import (MAIN, CLOSE_SCRIPT_WAIT_SECS)
+from common_lib.config import (MAIN, CLOSE_SCRIPT_WAIT_SECS, TWHK_LOGO_ICON, MSG_DURATION_MS)
 from common_lib.utils import start_script, close_script
 from common_lib.translator import translate
 
@@ -25,7 +25,7 @@ logger: Logger = getLogger(__name__)  # __name__ gives "package.module"
 class RGBServerGUI(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("StartOpenRGB")
+        self.setWindowTitle(f"{translate("TEXT_OpenRGBServerMgr")}")
         self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
 
         # Central widget
@@ -33,8 +33,8 @@ class RGBServerGUI(QMainWindow):
         layout = QVBoxLayout(central_widget)
 
         # Buttons
-        self.restart_button = QPushButton("Restart Server", self)
-        self.terminate_button = QPushButton("Terminate Server", self)
+        self.restart_button = QPushButton(f"{translate("WORD_Restart")}", self)
+        self.terminate_button = QPushButton(f"{translate("WORD_Terminate")}", self)
         self.restart_button.clicked.connect(self.restart_server)
         self.terminate_button.clicked.connect(self.terminate_server)
 
@@ -44,25 +44,29 @@ class RGBServerGUI(QMainWindow):
 
         # System tray
         self.tray_icon = QSystemTrayIcon(self)
-        self.tray_icon.setIcon(QIcon(r"C:\Users\Mike\Software\Python\TWHK_Repository\TWHK_logo_icon.png"))
-        self.tray_icon.setToolTip("OpenRGB Server")
+        self.tray_icon.setIcon(QIcon(TWHK_LOGO_ICON))
+        self.tray_icon.setToolTip(f"{translate("TEXT_OpenRGBServerMgr")}")
 
         tray_menu = QMenu()
-        open_action = tray_menu.addAction("Open")
+        open_action = tray_menu.addAction(f"{translate("WORD_Open")}")
         open_action.triggered.connect(self.show)
 
-        quit_action = tray_menu.addAction("Quit")
+        quit_action = tray_menu.addAction(f"{translate("WORD_Terminate")}")
         quit_action.triggered.connect(self.quit_application)
 
         self.tray_icon.setContextMenu(tray_menu)
         self.tray_icon.activated.connect(self.show_from_tray)
 
         if not QSystemTrayIcon.isSystemTrayAvailable():
-            logger.error("System tray is not available on this system.")
-            QMessageBox.critical(self, "Error", "System tray is not available.")
+            # logger.error("System tray is not available on this system.")
+            logger.error(f"{translate("TEXT_NoSystemTray")}")
+            QMessageBox.critical(self, f"{translate("WORD_Error")}: ",
+                                       f"{translate("TEXT_NoSystemTray")}.")
         else:
-            logger.info("System tray is available, initializing.")
-            self.tray_icon.showMessage("OpenRGB Server", "Application running in the system tray.")
+            # logger.info("System tray is available, initializing.")
+            logger.info(f"{translate("TEXT_SystemTrayAvailable")}")
+            self.tray_icon.showMessage(f"{translate("TEXT_OpenRGBServerMgr")}",
+                                       f"{translate("TEXT_AppInSysTray")}")
 
         self.tray_icon.show()
 
@@ -80,13 +84,14 @@ class RGBServerGUI(QMainWindow):
                 raise RuntimeError(translate("TEXT_ServerNotAvailable"))
         except Exception as e:
             logger.exception(str(e))
-            QMessageBox.critical(self, "Error", str(e))
+            QMessageBox.critical(self, f"{translate("WORD_Error")}", str(e))
 
     def terminate_server(self):
         if self.server_proc:
             self.server_proc.terminate()
             self.server_proc = None
-            QMessageBox.information(self, "Terminate Server", "Server process terminated.")
+            QMessageBox.information(self, f"{translate("TEXT_EndProc")}",
+                                          f"{translate("TEXT_ProcEnded")}")
 
     def restart_server(self):
         self.terminate_server()
@@ -106,10 +111,11 @@ class RGBServerGUI(QMainWindow):
             event.ignore()
             self.hide()
             self.tray_icon.showMessage(
-                "OpenRGB Server",
-                "Application minimized to system tray. Right-click the tray icon for options.",
+                f"{translate("TEXT_OpenRGBServerMgr")}",
+                f"{translate("TEXT_AppInSysTray")}",
+                # "Application minimized to system tray. Right-click the tray icon for options.",
                 QSystemTrayIcon.Information,
-                3000  # Duration in milliseconds
+                MSG_DURATION_MS
             )
 
 

@@ -2,194 +2,245 @@
 msgid ""
 msgstr ""
 
-#: rgb_controller\rgb_control.py
+#: rgb_controller\rgb_control.py:46
 msgid "TEXT_RGBControlFailed"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "NO_ARGS_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:28
+#: rgb_controller\RGB_ServerStarter.py:48
+#: rgb_controller\RGB_ServerStarter.py:68
+#: rgb_controller\RGB_ServerStarter.py:114
+msgid "TEXT_OpenRGBServerMgr"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "TOO_MANY_ARGS_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:36
+msgid "WORD_Restart"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "INVALID_SINGLE_ARG_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:37
+#: rgb_controller\RGB_ServerStarter.py:54
+msgid "WORD_Terminate"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "PERMITTED_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:51
+msgid "WORD_Open"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "INVALID_FIRST_ARG_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:62
+#: rgb_controller\RGB_ServerStarter.py:64
+msgid "TEXT_NoSystemTray"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "INVALID_COLOR_ARG_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:63
+#: rgb_controller\RGB_ServerStarter.py:87
+msgid "WORD_Error"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "INVALID_RGB_LEVEL_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:67
+msgid "TEXT_SystemTrayAvailable"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "ALLOWED_FROM_MSG_ID"
+#: rgb_controller\RGB_ServerStarter.py:69
+#: rgb_controller\RGB_ServerStarter.py:115
+msgid "TEXT_AppInSysTray"
 msgstr ""
 
-#: rgb_controller\utils.py
-msgid "TO_MSG_ID"
-msgstr ""
-
-#: rgb_controller\utils.py
-msgid "ARGS_VALIDATED_MSG_ID"
-msgstr ""
-
-#: rgb_controller\utils.py
-msgid "INFO_MSG_PROCESSING_MODE"
-msgstr ""
-
-#: common_lib\utils.py
-msgid "START_MSG_ID"
-msgstr ""
-
-#: common_lib\utils.py
-msgid "DEBUG_MODE_MSG_ID"
-msgstr ""
-
-#: common_lib\utils.py
-msgid "SCRIPT_CLOSE_MSG_ID"
-msgstr ""
-
-#: rgb_lib\color_utils.py
-msgid "Number of spectrum colors required"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "TEXT_OpenRGBServerRunning"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "TEXT_OpenRGBServerNotRunning"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "TEXT_ServerAvailable"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "WORD_host"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "WORD_port"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "TEXT_ServerNotAvailable"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_ServerStart"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_ServerWait"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_Connected"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_Devices"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "ERROR_FailedConnectDevices"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "WORD_Expected"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "WORD_Found"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_ServerDisconnected"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_ServerStopWait"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "ERROR_ServerStopFailed"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "INFO_ServerStopped"
-msgstr ""
-
-#: rgb_lib\open_RGB_utils.py
-msgid "ERROR_ServerNotRunning"
-msgstr ""
-
-#: rgb_lib\RGB_ServerStarter.py
+#: rgb_controller\RGB_ServerStarter.py:81
+#: rgb_controller\RGB_ServerStarter_copy.py:35
 msgid "TEXT_ServerStartFailed"
 msgstr ""
 
-#: system_lib\utils.py
+#: rgb_controller\RGB_ServerStarter.py:84
+#: rgb_controller\RGB_ServerStarter_copy.py:38 rgb_lib\open_RGB_utils.py:54
+msgid "TEXT_ServerNotAvailable"
+msgstr ""
+
+#: rgb_controller\RGB_ServerStarter.py:93
+msgid "TEXT_EndProc"
+msgstr ""
+
+#: rgb_controller\RGB_ServerStarter.py:94
+msgid "TEXT_ProcEnded"
+msgstr ""
+
+#: rgb_controller\utils.py:26
+msgid "NO_ARGS_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:30
+msgid "TOO_MANY_ARGS_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:34
+msgid "INVALID_SINGLE_ARG_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:36 rgb_controller\utils.py:44
+#: rgb_controller\utils.py:51
+msgid "PERMITTED_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:42
+msgid "INVALID_FIRST_ARG_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:49
+msgid "INVALID_COLOR_ARG_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:57
+msgid "INVALID_RGB_LEVEL_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:59
+msgid "ALLOWED_FROM_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:60
+msgid "TO_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:63
+msgid "ARGS_VALIDATED_MSG_ID"
+msgstr ""
+
+#: rgb_controller\utils.py:71
+msgid "INFO_MSG_PROCESSING_MODE"
+msgstr ""
+
+#: common_lib\utils.py:14
+msgid "START_MSG_ID"
+msgstr ""
+
+#: common_lib\utils.py:15
+msgid "DEBUG_MODE_MSG_ID"
+msgstr ""
+
+#: common_lib\utils.py:23
+msgid "SCRIPT_CLOSE_MSG_ID"
+msgstr ""
+
+#: rgb_lib\color_utils.py:19
+msgid "Number of spectrum colors required"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:32
+msgid "TEXT_OpenRGBServerRunning"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:35
+msgid "TEXT_OpenRGBServerNotRunning"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:48
+msgid "TEXT_ServerAvailable"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:49 rgb_lib\open_RGB_utils.py:55
+msgid "WORD_host"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:50 rgb_lib\open_RGB_utils.py:56
+msgid "WORD_port"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:79
+msgid "INFO_ServerStart"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:83
+msgid "INFO_ServerWait"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:98
+msgid "INFO_Connected"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:99
+msgid "INFO_Devices"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:103
+msgid "ERROR_FailedConnectDevices"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:104
+msgid "WORD_Expected"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:105 system_lib\utils.py:129
+#: system_lib\utils.py:133
+msgid "WORD_Found"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:113
+msgid "INFO_ServerDisconnected"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:125
+msgid "INFO_ServerStopWait"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:133
+msgid "ERROR_ServerStopFailed"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:135
+msgid "INFO_ServerStopped"
+msgstr ""
+
+#: rgb_lib\open_RGB_utils.py:140
+msgid "ERROR_ServerNotRunning"
+msgstr ""
+
+#: system_lib\utils.py:38
 msgid "TEXT_ProcessStartError"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:45
 msgid "TEXT_CheckProcessRunning"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:62
 msgid "TEXT_GettingProcessDictionary"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:76
 msgid "TEXT_InvalidProcIdType"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:79
 msgid "TEXT_InvalidProcNameType"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:83
 msgid "TEXT_InvalidProcObject"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:87
 msgid "TEXT_DuplProcessName"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:92
 msgid "TEXT_AddedProcToDict"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:97
 msgid "TEXT_PoppedDuplProcFromDict"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:105
 msgid "TEXT_ProcessAccessError"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:113
 msgid "WORD_Getting"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:126 system_lib\utils.py:132
 msgid "WORD_Process"
 msgstr ""
 
-#: system_lib\utils.py
+#: system_lib\utils.py:133
 msgid "WORD_Not"
 msgstr ""

@@ -20,21 +20,26 @@ def generate_pot():
                 if file.endswith(".py"):  # Process Python files only
                     file_path = os.path.join(root, file)
                     with open(file_path, "r", encoding="utf-8") as f:
-                        content = f.read()
-                        matches = TRANSLATE_PATTERN.findall(content)
-                        for match in matches:
-                            if not pot.find(match):
-                                entry = polib.POEntry(
+                        # Process the file line by line to capture line numbers
+                        for line_num, line in enumerate(f, start=1):  # `start=1` for 1-based line numbers
+                            matches = TRANSLATE_PATTERN.findall(line)
+                            for match in matches:
+                                entry = pot.find(match)
+                                if not entry:
+                                    entry = polib.POEntry(
                                         msgid=match,
                                         msgstr="",
-                                        occurrences=[(file_path, 0)]  # Dummy line numbers
+                                        occurrences=[(file_path, line_num)]  # Use actual line number
                                     )
-                                pot.append(entry)
+                                    pot.append(entry)
+                                else:
+                                    # Append the new occurrence
+                                    if (file_path, line_num) not in entry.occurrences:
+                                        entry.occurrences.append((file_path, line_num))  # Avoid duplicates
 
     os.makedirs(LOCALES_PATH, exist_ok=True)
     pot.save(POT_FILE_PATH)
     print(f"Generated {POT_FILE_PATH}")
-
 
 # Create or update .po files
 def create_or_update_po(language_code):
@@ -48,11 +53,21 @@ def create_or_update_po(language_code):
 
     # Add missing msgid from the .pot file to .po
     for pot_entry in pot:
-        if po.find(pot_entry.msgid):  # If msgid exists in the .po file
-            print(f"Exists: {pot_entry.msgid} {pot_entry.msgstr}")
+
+        po_entry = po.find(pot_entry.msgid)
+        if po_entry:  # If msgid exists in the .po file
+            po_entry.occurrences = pot_entry.occurrences
+
+            # Format occurrences with newlines
+            occurrences_str = "\n".join([f"#: {file}:{line}" for file, line in po_entry.occurrences])
+            print(f"Exists: Msgid: {po_entry.msgid} Msgstr: {po_entry.msgstr} Occurrences:\n{occurrences_str}")
+
         else:
             po.append(pot_entry)
-            print(f"Added: {pot_entry.msgid} {pot_entry.msgstr}")
+
+            # Format occurrences with newlines
+            occurrences_str = "\n".join([f"#: {file}:{line}" for file, line in pot_entry.occurrences])
+            print(f"Exists: Msgid: {pot_entry.msgid} Msgstr: {pot_entry.msgstr} Occurrences:\n{occurrences_str}")
 
     # Remove obsolete entries (those not in the .pot file)
     print(f"Checking for obsolete msgids: remove if exists in {po_file_path}, no longer in {POT_FILE_PATH}")
